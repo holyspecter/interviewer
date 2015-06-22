@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Interviewer
+        psr4_prefix: Interviewer
+        src_path: app
