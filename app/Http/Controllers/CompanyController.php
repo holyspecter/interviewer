@@ -3,7 +3,7 @@
 namespace Interviewer\Http\Controllers;
 
 use Illuminate\Support\Facades\View;
-use Interviewer\Company;
+use Interviewer\Model\Company;
 use Interviewer\Http\Requests;
 
 class CompanyController extends Controller
