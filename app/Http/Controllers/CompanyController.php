@@ -2,6 +2,7 @@
 
 namespace Interviewer\Http\Controllers;
 
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\View;
 use Interviewer\Model\Company;
 use Interviewer\Http\Requests;
@@ -9,8 +10,6 @@ use Interviewer\Http\Requests;
 class CompanyController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
      * @return Response
      */
     public function index()
@@ -34,11 +33,14 @@ class CompanyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param Requests\CreateCompanyRequest $request
      * @return Response
      */
-    public function store()
+    public function store(Requests\CreateCompanyRequest $request)
     {
-        //
+        Company::create($request->all());
+
+        return redirect()->route('companies.index');
     }
 
     /**
@@ -49,7 +51,11 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        $company = Company::findOrFail($id);
+
+        return View::make('companies.show', [
+            'company' => $company
+        ]);
     }
 
     /**
