@@ -3,12 +3,16 @@
 namespace Interviewer\Http\Controllers;
 
 use Interviewer\Http\Requests;
-use Interviewer\Http\Controllers\Controller;
 use Interviewer\Model\Company;
 use Interviewer\Model\Position;
 
 class PositionController extends Controller
 {
+    /**
+     * @param int $companyId
+     *
+     * @return \Illuminate\View\View
+     */
     public function create($companyId)
     {
         $company = Company::findOrFail($companyId);
@@ -18,6 +22,12 @@ class PositionController extends Controller
         ]);
     }
 
+    /**
+     * @param Requests\CreatePositionRequest $request
+     * @param int                            $companyId
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Requests\CreatePositionRequest $request, $companyId)
     {
         $company = Company::findOrFail($companyId);
@@ -32,6 +42,11 @@ class PositionController extends Controller
         ]);
     }
 
+    /**
+     * @param int $id
+     *
+     * @return \Illuminate\View\View
+     */
     public function show($id)
     {
         $position = Position::findOrFail($id);
