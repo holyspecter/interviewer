@@ -6,16 +6,16 @@
     {!! Form::open(['url' => route('positions.store', ['companyId' => $company->id])]) !!}
         <div class="form-group">
             {!! Form::label('title', 'title') !!}
-            {!! Form::text('title', Input::old('title'), array('class' => 'form-control')) !!}
+            {!! Form::text('title', Input::old('title'), ['class' => 'form-control']) !!}
         </div>
     
         <div class="form-group">
             {!! Form::label('description', 'Description') !!}
-            {!! Form::text('description', Input::old('description'), array('class' => 'form-control')) !!}
+            {!! Form::text('description', Input::old('description'), ['class' => 'form-control']) !!}
         </div>
     
         <div class="form-group">
-            {!! Form::submit('Save') !!}
+            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
         </div>
     {!! Form::close() !!}
 @endsection
