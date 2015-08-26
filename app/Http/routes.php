@@ -16,3 +16,19 @@ Route::get('/', function () {
 });
 
 Route::resource('companies', 'CompanyController');
+
+// Positions
+Route::get('companies/{companyId}/positions/create', [
+    'as' => 'positions.create',
+    'uses' => 'PositionController@create',
+]);
+
+Route::post('companies/{companyId}/positions', [
+    'as' => 'positions.store',
+    'uses' => 'PositionController@store',
+]);
+
+Route::get('positions/{id}', [
+    'as' => 'positions.show',
+    'uses' => 'PositionController@show',
+]);
