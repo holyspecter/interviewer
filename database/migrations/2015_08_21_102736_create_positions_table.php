@@ -14,11 +14,14 @@ class CreatePositionsTable extends Migration
     {
         Schema::create('positions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
+            $table->unsignedInteger('company_id');
             $table->string('title');
             $table->text('description');
-//            $table->
             $table->timestamps();
+
+            $table->foreign('company_id')
+                ->references('id')
+                ->on('companies');
         });
     }
 

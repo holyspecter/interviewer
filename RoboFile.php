@@ -6,6 +6,9 @@
  */
 class RoboFile extends \Robo\Tasks
 {
+    /**
+     * Runs code checking tools
+     */
     function check()
     {
         $this->taskExec('bin/phpcs --standard=psr2 app/')
@@ -18,9 +21,24 @@ class RoboFile extends \Robo\Tasks
             ->run();
     }
 
+    /**
+     * Runs test suite
+     */
     function test()
     {
         $this->taskPhpUnit()
+            ->run();
+    }
+
+    /**
+     * Refreshes DB and seeds records
+     */
+    function dbReinstall()
+    {
+        $this->taskExec('php artisan migrate:refresh')
+            ->run();
+
+        $this->taskExec('php artisan db:seed')
             ->run();
     }
 }

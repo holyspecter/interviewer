@@ -14,12 +14,12 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('questionnaire_id');
+            $table->unsignedInteger('questionnaire_id');
             $table->string('question');
 
             $table->foreign('questionnaire_id')
                 ->references('id')
-                ->on('users');
+                ->on('questionnaires');
         });
     }
 
