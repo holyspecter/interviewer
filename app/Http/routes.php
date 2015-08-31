@@ -21,3 +21,8 @@ Route::get('positions/{id}', [
     'as' => 'positions.show',
     'uses' => 'PositionController@show',
 ])->where(['id' => '\d+']);
+
+// Authentication routes
+Route::get('login', 'Auth\AuthController@getLogin');
+Route::post('login', 'Auth\AuthController@postLogin');
+Route::get('logout', 'Auth\AuthController@getLogout');

@@ -15,7 +15,8 @@ $factory->define(Interviewer\User::class, function ($faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
-        'password' => str_random(10),
+        'password' => '123',
         'remember_token' => str_random(10),
+        'company_id' => 1,
     ];
 });
