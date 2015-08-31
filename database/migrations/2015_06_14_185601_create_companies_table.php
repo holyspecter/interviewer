@@ -19,6 +19,12 @@ class CreateCompaniesTable extends Migration
             $table->string('homepage');
             $table->timestamps();
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign('company_id')
+                ->references('id')
+                ->on('companies');
+        });
     }
 
     /**
