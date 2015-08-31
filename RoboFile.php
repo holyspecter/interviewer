@@ -35,10 +35,13 @@ class RoboFile extends \Robo\Tasks
      */
     function dbReinstall()
     {
-        $this->taskExec('php artisan migrate:refresh')
+        $this->taskExec('php artisan db:drop')
             ->run();
 
-        $this->taskExec('php artisan db:seed')
+        $this->taskExec('php artisan migrate:refresh --seed')
+            ->run();
+
+        $this->taskExec('php artisan db:create')
             ->run();
     }
 }

@@ -4,6 +4,8 @@ namespace Interviewer\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Interviewer\Console\Commands\DbDropCommand;
+use Interviewer\Console\Commands\DbCreateCommand;
 
 class Kernel extends ConsoleKernel
 {
@@ -14,6 +16,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \Interviewer\Console\Commands\Inspire::class,
+        DbDropCommand::class,
+        DbCreateCommand::class,
     ];
 
     /**
