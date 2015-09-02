@@ -27,10 +27,15 @@ class DbCreateCommand extends Command
      */
     public function handle()
     {
-        // @todo: fix issue http://stackoverflow.com/questions/32313385/database-creation-command-in-laravel-5-1
-
         $dbType = \Config::get('database.default');
         $dbName = \Config::get('database.connections')[$dbType]['database'];
+
+        /**
+         * workaround to avoid exception on DB connection:
+         * @link http://stackoverflow.com/questions/32313385/database-creation-command-in-laravel-5-1
+         */
+        \Config::set("database.connections.$dbType.database", '');
+
         \DB::statement("CREATE DATABASE `$dbName`");
 
         $this->info("Database $dbName has been created.");

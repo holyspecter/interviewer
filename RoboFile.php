@@ -38,10 +38,10 @@ class RoboFile extends \Robo\Tasks
         $this->taskExec('php artisan db:drop')
             ->run();
 
-        $this->taskExec('php artisan migrate:refresh --seed')
+        $this->taskExec('php artisan db:create')
             ->run();
 
-        $this->taskExec('php artisan db:create')
+        $this->taskExec('php artisan migrate:refresh --seed')
             ->run();
     }
 }
