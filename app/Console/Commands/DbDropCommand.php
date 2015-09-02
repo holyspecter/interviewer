@@ -27,7 +27,7 @@ class DbDropCommand extends Command
      */
     public function handle()
     {
-        $db = \DB::connection()->getDatabaseName();;
+        $db = \DB::connection()->getDatabaseName();
         \DB::statement("DROP DATABASE `$db`");
 
         $this->info("Database $db has been dropped.");
