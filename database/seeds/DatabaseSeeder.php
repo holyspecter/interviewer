@@ -17,8 +17,7 @@ class DatabaseSeeder extends Seeder
 
          $this->call('CompanyTableSeeder');
          $this->call('PositionTableSeeder');
-
-        factory(User::class, 2)->create();
+         $this->call('UserTableSeeder');
 
         Model::reguard();
     }

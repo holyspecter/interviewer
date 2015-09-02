@@ -6,6 +6,11 @@ Route::get('/', function () {
 
 Route::resource('companies', 'CompanyController');
 
+Route::get('home', [
+    'as' => 'home',
+    'uses' => 'HomeController@home',
+]);
+
 // Positions
 Route::get('companies/{companyId}/positions/create', [
     'as' => 'positions.create',

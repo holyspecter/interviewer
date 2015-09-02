@@ -22,4 +22,6 @@
             <button type="submit" class="btn btn-primary">Login</button>
         </div>
     </form>
+
+    {{ dd($errors)  }}
 @endsection
