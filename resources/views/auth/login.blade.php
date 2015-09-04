@@ -4,6 +4,8 @@
     <form method="POST" action="/login">
         {!! csrf_field() !!}
 
+        @include('partials.form_errors')
+
         <div class="form-group">
             {!! Form::label('title', 'Email') !!}
             <input type="email" name="email" value="{{ old('email') }}" class="form-control">
@@ -22,6 +24,4 @@
             <button type="submit" class="btn btn-primary">Login</button>
         </div>
     </form>
-
-    {{ dd($errors)  }}
 @endsection
