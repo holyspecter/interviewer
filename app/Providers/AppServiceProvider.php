@@ -2,6 +2,7 @@
 
 namespace Interviewer\Providers;
 
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,9 +12,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Guard $guard)
     {
-        //
+        view()->composer('*', function ($view) use ($guard) {
+            $view->with('user', $guard->user());
+        });
     }
 
     /**
