@@ -7,6 +7,7 @@ Route::get('/', function () {
 Route::resource('companies', 'CompanyController');
 
 Route::get('home', [
+    'middleware' => 'auth',
     'as' => 'home',
     'uses' => 'HomeController@home',
 ]);
