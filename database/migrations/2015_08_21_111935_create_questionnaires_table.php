@@ -14,7 +14,17 @@ class CreateQuestionnairesTable extends Migration
     {
         Schema::create('questionnaires', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
+            $table->text('description')->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('positions', function (Blueprint $table) {
+            $table->unsignedInteger('questionnaire_id')->nullable();
+
+            $table->foreign('questionnaire_id')
+                ->references('id')
+                ->on('questionnaires');
         });
     }
 
@@ -25,6 +35,11 @@ class CreateQuestionnairesTable extends Migration
      */
     public function down()
     {
+        Schema::table('positions', function (Blueprint $table) {
+            $table->dropForeign('positions_questionnaire_id_foreign');
+            $table->dropColumn('questionnaire_id');
+        });
+
         Schema::drop('questionnaires');
     }
 }

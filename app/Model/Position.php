@@ -11,13 +11,19 @@ class Position extends Model
         'description'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function company()
     {
         return $this->belongsTo(Company::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function questionnaire()
     {
-        return $this->hasOne(Questionnaire::class);
+        return $this->belongsTo(Questionnaire::class);
     }
 }

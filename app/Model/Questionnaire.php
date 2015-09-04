@@ -6,8 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Questionnaire extends Model
 {
-    public function position()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function positions()
     {
-        return $this->belongsTo(Position::class);
+        return $this->hasMany(Position::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
     }
 }
