@@ -21,4 +21,12 @@ class Questionnaire extends Model
     {
         return $this->hasMany(Question::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }

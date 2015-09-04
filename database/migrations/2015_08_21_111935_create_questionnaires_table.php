@@ -14,9 +14,15 @@ class CreateQuestionnairesTable extends Migration
     {
         Schema::create('questionnaires', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('company_id');
             $table->string('title');
             $table->text('description')->nullable();
             $table->timestamps();
+
+            $table->foreign('company_id')
+                ->references('id')
+                ->on('companies')
+                ->onDelete('cascade');
         });
 
         Schema::table('positions', function (Blueprint $table) {
