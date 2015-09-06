@@ -44,4 +44,16 @@ class RoboFile extends \Robo\Tasks
         $this->taskExec('php artisan migrate:refresh --seed')
             ->run();
     }
+
+    /**
+     * Generates helper file for auto completion in IDE
+     */
+    function ideHelpers()
+    {
+        $this->taskExec('php artisan ide-helper:generate')
+            ->run();
+
+        $this->taskExec('php artisan ide-helper:meta') // for PHPStorm
+            ->run();
+    }
 }
