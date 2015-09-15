@@ -23,7 +23,7 @@ Route::post('companies/{companyId}/positions', [
     'uses' => 'PositionController@store',
 ])->where(['companyId' => '\d+']);
 
-Route::get('positions/{id}', [
+Route::get('positions/{positions}', [
     'as' => 'positions.show',
     'uses' => 'PositionController@show',
 ])->where(['id' => '\d+']);

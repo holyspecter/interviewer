@@ -46,13 +46,12 @@ class CompanyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Company  $company
+     *
      * @return Response
      */
-    public function show($id)
+    public function show(Company $company)
     {
-        $company = Company::findOrFail($id);
-
         return View::make('companies.show', [
             'company' => $company
         ]);
@@ -61,10 +60,10 @@ class CompanyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Company $company
      * @return Response
      */
-    public function edit($id)
+    public function edit(Company $company)
     {
         //
     }
@@ -83,10 +82,10 @@ class CompanyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Company $company
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Company $company)
     {
         //
     }

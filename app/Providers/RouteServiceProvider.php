@@ -4,6 +4,8 @@ namespace Interviewer\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Interviewer\Model\Company;
+use Interviewer\Model\Position;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -24,7 +26,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        //
+        $router->model('positions', Position::class);
+        $router->model('companies', Company::class);
 
         parent::boot($router);
     }

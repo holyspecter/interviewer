@@ -43,14 +43,12 @@ class PositionController extends Controller
     }
 
     /**
-     * @param int $id
+     * @param Position $position
      *
      * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function show(Position $position)
     {
-        $position = Position::findOrFail($id);
-
         return view('positions.show', [
             'position' => $position
         ]);
