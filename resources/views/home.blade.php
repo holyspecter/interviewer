@@ -7,17 +7,38 @@
         {{ $company->description }}
     </article>
     <h4>Positions</h4>
-    <ul>
-        @foreach($company->positions as $position)
-            <li><a href="{{ route('positions.show', ['id' => $position->id]) }}">{{ $position->title }}</a></li>
-        @endforeach
-    </ul>
-
-    @if($user->company->id == $company->id)
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                {!! Html::link(route('positions.create', ['companyId' => $company->id]), 'Add position', ['class' => 'btn btn-primary']) !!}
-            </div>
+    <div class="row">
+        <div class="col-md-4">
+            <ul>
+                @foreach($company->positions as $position)
+                    <li><a href="{{ route('positions.show', ['id' => $position->id]) }}">{{ $position->title }}</a></li>
+                @endforeach
+            </ul>
         </div>
-    @endif
+        <div class="col-md-4">
+            @if($user->company->id == $company->id)
+                {!! Html::link(route('positions.create', ['companyId' => $company->id]), 'Add position', ['class' => 'btn btn-primary']) !!}
+            @endif
+        </div>
+    </div>
+
+    <h4>Questionnaires</h4>
+    <div class="row">
+        <div class="col-md-4">
+            <ul>
+                @foreach($company->questionnaires as $questionnaire)
+                    <li>
+                        <a href="{{ route('companies.questionnaires.show', ['companies' => $company->id, 'questionnaires' => $questionnaire->id]) }}">
+                            {{ $questionnaire->title }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="col-md-4">
+            @if($user->company->id == $company->id)
+                {!! Html::link(route('companies.questionnaires.create', ['companies' => $company->id]), 'Add questionnaire', ['class' => 'btn btn-primary']) !!}
+            @endif
+        </div>
+    </div>
 @endsection

@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Questionnaire extends Model
 {
+    protected $fillable = [
+        'title',
+        'description',
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

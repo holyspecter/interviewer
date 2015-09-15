@@ -6,6 +6,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Interviewer\Model\Company;
 use Interviewer\Model\Position;
+use Interviewer\Model\Questionnaire;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $router->model('positions', Position::class);
         $router->model('companies', Company::class);
+        $router->model('questionnaires', Questionnaire::class);
 
         parent::boot($router);
     }

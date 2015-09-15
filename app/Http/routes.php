@@ -5,6 +5,7 @@ Route::get('/', function () {
 });
 
 Route::resource('companies', 'CompanyController');
+Route::resource('companies.questionnaires', 'QuestionnaireController');
 
 Route::get('home', [
     'middleware' => 'auth',
