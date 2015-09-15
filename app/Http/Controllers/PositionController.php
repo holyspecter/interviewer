@@ -8,15 +8,30 @@ use Interviewer\Model\Position;
 
 class PositionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
-     * @param int $companyId
+     * @param Company $company
      *
      * @return \Illuminate\View\View
      */
-    public function create($companyId)
+    public function index(Company $company)
     {
-        $company = Company::findOrFail($companyId);
+        return view('positions.index', [
+            'company' => $company,
+        ]);
+    }
 
+    /**
+     * @param Company $company
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create(Company $company)
+    {
         return view('positions.create', [
             'company' => $company
         ]);
@@ -24,14 +39,12 @@ class PositionController extends Controller
 
     /**
      * @param Requests\CreatePositionRequest $request
-     * @param int                            $companyId
+     * @param Company                        $company
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Requests\CreatePositionRequest $request, $companyId)
+    public function store(Requests\CreatePositionRequest $request, Company $company)
     {
-        $company = Company::findOrFail($companyId);
-
         $position = new Position($request->all());
         $position->company_id = $company->id;
 
@@ -43,13 +56,14 @@ class PositionController extends Controller
     }
 
     /**
+     * @param Company  $company
      * @param Position $position
-     *
      * @return \Illuminate\View\View
      */
-    public function show(Position $position)
+    public function show(Company $company, Position $position)
     {
         return view('positions.show', [
+            'company' => $company,
             'position' => $position
         ]);
     }

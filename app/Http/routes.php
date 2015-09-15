@@ -14,23 +14,9 @@ Route::get('home', [
 ]);
 
 // Positions
-Route::get('companies/{companyId}/positions/create', [
-    'middleware' => 'auth',
-    'as' => 'positions.create',
-    'uses' => 'PositionController@create',
-])->where(['companyId' => '\d+']);
-
-Route::post('companies/{companyId}/positions', [
-    'middleware' => 'auth',
-    'as' => 'positions.store',
-    'uses' => 'PositionController@store',
-])->where(['companyId' => '\d+']);
-
-Route::get('positions/{positions}', [
-    'middleware' => 'auth',
-    'as' => 'positions.show',
-    'uses' => 'PositionController@show',
-])->where(['id' => '\d+']);
+Route::resource('companies.positions', 'PositionController', [
+    'only' => ['index', 'create', 'store', 'show']
+]);
 
 // Authentication routes
 Route::get('login', [

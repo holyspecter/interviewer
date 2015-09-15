@@ -5,12 +5,16 @@ namespace Interviewer\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Interviewer\Http\Requests;
-use Interviewer\Http\Controllers\Controller;
 use Interviewer\Model\Company;
 use Interviewer\Model\Questionnaire;
 
 class QuestionnaireController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *

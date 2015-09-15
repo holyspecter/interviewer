@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9816311c91ba4e543bac5da45f20e250",
+    "hash": "6a44ed68ba41b646dadcd762691229af",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -115,6 +115,55 @@
                 "utils"
             ],
             "time": "2015-07-23 00:54:12"
+        },
+        {
+            "name": "davejamesmiller/laravel-breadcrumbs",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/davejamesmiller/laravel-breadcrumbs.git",
+                "reference": "b60aa0ca233923d759ef1da4a55fa0233ae38bab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/davejamesmiller/laravel-breadcrumbs/zipball/b60aa0ca233923d759ef1da4a55fa0233ae38bab",
+                "reference": "b60aa0ca233923d759ef1da4a55fa0233ae38bab",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "illuminate/view": "5.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "orchestra/testbench": "3.0.*",
+                "phpunit/phpunit": "4.*",
+                "satooshi/php-coveralls": "0.6.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DaveJamesMiller\\Breadcrumbs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT License"
+            ],
+            "authors": [
+                {
+                    "name": "Dave James Miller",
+                    "email": "dave@davejamesmiller.com",
+                    "homepage": "http://davejamesmiller.com/"
+                }
+            ],
+            "description": "A simple Laravel-style way to create breadcrumbs in Laravel 4+.",
+            "homepage": "http://laravel-breadcrumbs.davejamesmiller.com",
+            "keywords": [
+                "laravel"
+            ],
+            "time": "2015-09-05 20:13:26"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1815,7 +1864,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codegyre/Robo/zipball/690c4bb33a47bd73daa8e01934e479973059d76c",
+                "url": "https://api.github.com/repos/Codegyre/Robo/zipball/10aa223f6d1db182dc81d723bf1545dfc6ff380d",
                 "reference": "10aa223f6d1db182dc81d723bf1545dfc6ff380d",
                 "shasum": ""
             },
@@ -3661,6 +3710,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "illuminate/html": 20,
+        "davejamesmiller/laravel-breadcrumbs": 20,
         "phpmd/phpmd": 20,
         "sebastian/phpcpd": 20,
         "squizlabs/php_codesniffer": 20,

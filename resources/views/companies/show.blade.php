@@ -15,7 +15,7 @@
     </ul>
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            {!! Html::link(route('positions.create', ['companyId' => $company->id]), 'Add position', ['class' => 'btn btn-primary']) !!}
+            {!! Html::link(route('companies.positions.create', ['companyId' => $company->id]), 'Add position', ['class' => 'btn btn-primary']) !!}
         </div>
     </div>
 @endsection

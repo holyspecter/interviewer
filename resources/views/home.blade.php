@@ -11,13 +11,13 @@
         <div class="col-md-4">
             <ul>
                 @foreach($company->positions as $position)
-                    <li><a href="{{ route('positions.show', ['id' => $position->id]) }}">{{ $position->title }}</a></li>
+                    <li><a href="{{ route('companies.positions.show', ['companies' => $company->id, 'positions' => $position->id]) }}">{{ $position->title }}</a></li>
                 @endforeach
             </ul>
         </div>
         <div class="col-md-4">
             @if($user->company->id == $company->id)
-                {!! Html::link(route('positions.create', ['companyId' => $company->id]), 'Add position', ['class' => 'btn btn-primary']) !!}
+                {!! Html::link(route('companies.positions.create', ['companies' => $company->id]), 'Add position', ['class' => 'btn btn-primary']) !!}
             @endif
         </div>
     </div>

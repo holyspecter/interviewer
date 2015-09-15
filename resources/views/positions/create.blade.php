@@ -3,9 +3,9 @@
 @section('content')
     <h3>New vacancy for company {{ $company->title }}</h3>
     <hr/>
-    {!! Form::open(['url' => route('positions.store', ['companyId' => $company->id])]) !!}
+    {!! Form::open(['url' => route('companies.positions.store', ['companyId' => $company->id])]) !!}
         <div class="form-group">
-            {!! Form::label('title', 'title') !!}
+            {!! Form::label('title', 'Title') !!}
             {!! Form::text('title', Input::old('title'), ['class' => 'form-control']) !!}
         </div>
     
