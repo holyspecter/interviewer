@@ -2,7 +2,7 @@
 
 namespace Interviewer\Http\Requests;
 
-class CreatePositionRequest extends Request
+class PositionRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.

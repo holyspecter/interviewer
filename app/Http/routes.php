@@ -14,9 +14,7 @@ Route::get('home', [
 ]);
 
 // Positions
-Route::resource('companies.positions', 'PositionController', [
-    'only' => ['index', 'create', 'store', 'show']
-]);
+Route::resource('companies.positions', 'PositionController');
 
 // Authentication routes
 Route::get('login', [
