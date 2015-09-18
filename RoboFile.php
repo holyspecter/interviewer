@@ -53,6 +53,9 @@ class RoboFile extends \Robo\Tasks
         $this->taskExec('php artisan ide-helper:generate')
             ->run();
 
+        $this->taskExec('php artisan ide-helper:models')
+            ->run();
+
         $this->taskExec('php artisan ide-helper:meta') // for PHPStorm
             ->run();
     }
