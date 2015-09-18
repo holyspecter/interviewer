@@ -5,7 +5,11 @@
     <ul>
         @foreach($companies as $company)
             <li>
-                <h4>{{ $company->name }}</h4>
+                <h4>
+                    <a href="{{ route('companies.show', ['companies' => $company->id]) }}">
+                        {{ $company->name }}
+                    </a>
+                </h4>
             </li>
         @endforeach
     </ul>
