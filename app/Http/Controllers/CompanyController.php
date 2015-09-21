@@ -9,6 +9,11 @@ use Interviewer\Http\Requests;
 
 class CompanyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * @return Response
      */
