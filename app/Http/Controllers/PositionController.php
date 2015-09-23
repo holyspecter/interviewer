@@ -100,8 +100,8 @@ class PositionController extends Controller
     {
         $position->update($request->all());
 
-        /** @todo: fix relation update */
-//        $position->questionnaire()->update([$request->input('questionnaire')]);
+        $position->questionnaire()->associate($request->input('questionnaire'));
+        $position->save();
 
         return redirect()->route('companies.show', [
             'company' => $company,
