@@ -5,7 +5,9 @@ namespace Interviewer\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Interviewer\Http\Requests;
+use Interviewer\Model\Answer;
 use Interviewer\Model\Company;
+use Interviewer\Model\Question;
 use Interviewer\Model\Questionnaire;
 
 class QuestionnaireController extends Controller
@@ -50,10 +52,27 @@ class QuestionnaireController extends Controller
      */
     public function store(Requests\QuestionnaireRequest $request, Company $company)
     {
+//        @todo: move all logic to dedicated service
+
         $questionnaire = new Questionnaire($request->all());
         $questionnaire->company_id = $company->id;
 
         $questionnaire->save();
+
+        foreach ($request->get('questions', []) as $questionItem) {
+            $question = new Question(['question' => $questionItem['question']]);
+            $question->questionnaire()->associate($questionnaire);
+            $question->save();
+
+            foreach ($questionItem['answers'] as $answerItem) {
+                $answer = new Answer([
+                    'content' => $answerItem,
+                    'correct' => false,
+                ]);
+                $answer->question()->associate($question);
+                $answer->save();
+            }
+        }
 
         return redirect()->route('companies.show', [
             'company' => $company,
