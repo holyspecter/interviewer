@@ -3,6 +3,7 @@
 use \DaveJamesMiller\Breadcrumbs\Generator as BreadcrumbsGenerator;
 use Interviewer\Model\Company;
 use Interviewer\Model\Position;
+use Interviewer\Model\Questionnaire;
 
 Breadcrumbs::register('home', function (BreadcrumbsGenerator $breadcrumbs) {
     $breadcrumbs->push('Home', route('home'));
@@ -30,13 +31,34 @@ Breadcrumbs::register('companies.positions.index', function (BreadcrumbsGenerato
 
 Breadcrumbs::register('companies.positions.create', function (BreadcrumbsGenerator $breadcrumbs, Company $company) {
     $breadcrumbs->parent('companies.positions.index', $company);
-    $breadcrumbs->push('New position', route('companies.positions.create'));
+    $breadcrumbs->push('New position');
 });
 
 Breadcrumbs::register(
     'companies.positions.show',
     function (BreadcrumbsGenerator $breadcrumbs, Company $company, Position $position) {
         $breadcrumbs->parent('companies.positions.index', $company);
-        $breadcrumbs->push($position->title, route('companies.positions.show'));
+        $breadcrumbs->push($position->title);
+    }
+);
+
+Breadcrumbs::register('companies.questionnaires.index', function (BreadcrumbsGenerator $breadcrumbs, Company $company) {
+    $breadcrumbs->parent('companies.show', $company);
+    $breadcrumbs->push('Questionnaires', route('companies.questionnaires.index', ['companies' => $company->id]));
+});
+
+Breadcrumbs::register(
+    'companies.questionnaires.show',
+    function (BreadcrumbsGenerator $breadcrumbs, Company $company, Questionnaire $questionnaire) {
+        $breadcrumbs->parent('companies.questionnaires.index', $company);
+        $breadcrumbs->push($questionnaire->title);
+    }
+);
+
+Breadcrumbs::register(
+    'companies.questionnaires.create',
+    function (BreadcrumbsGenerator $breadcrumbs, Company $company) {
+        $breadcrumbs->parent('companies.questionnaires.index', $company);
+        $breadcrumbs->push('New questionnaire');
     }
 );

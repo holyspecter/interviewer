@@ -3,9 +3,11 @@
 @section('content')
     <h3>Questionnaires for company {{ $company->title }}</h3>
     <ul>
-        @foreach($questionnaires as $questionnaire)
+        @foreach($company->questionnaires as $questionnaire)
             <li>
-                <h4>{{ $company->questionnaires->title }}</h4>
+                <a href="{{ route('companies.questionnaires.show', ['companies' => $company->id, 'questionnaires' => $questionnaire->id]) }}">
+                    {{ $questionnaire->title }}
+                </a>
             </li>
         @endforeach
     </ul>

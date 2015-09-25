@@ -23,7 +23,9 @@ class QuestionnaireController extends Controller
      */
     public function index(Company $company)
     {
-        return view('questionnaires.index', compact($company));
+        return view('questionnaires.index', [
+            'company' => $company
+        ]);
     }
 
     /**
@@ -69,7 +71,8 @@ class QuestionnaireController extends Controller
     public function show(Company $company, Questionnaire $questionnaire)
     {
         return view('questionnaires.show', [
-            'questionnaire' => $questionnaire
+            'company' => $company,
+            'questionnaire' => $questionnaire,
         ]);
     }
 
