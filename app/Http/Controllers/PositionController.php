@@ -111,11 +111,20 @@ class PositionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Company $company
+     * @param Position $position
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Company $company, Position $position)
     {
-        //
+        if (\Auth::user()->company->id !== $company->id) {
+            abort(403);
+        }
+
+        $position->delete();
+
+        return redirect()->route('companies.show', [
+            'company' => $company,
+        ]);
     }
 }

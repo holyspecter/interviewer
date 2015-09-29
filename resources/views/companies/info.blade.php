@@ -15,11 +15,7 @@
 <h4>Positions</h4>
 <div class="row">
     <div class="col-md-4">
-        <ul>
-            @foreach($company->positions as $position)
-                <li><a href="{{ route('companies.positions.show', ['companies' => $company->id, 'positions' => $position->id]) }}">{{ $position->title }}</a></li>
-            @endforeach
-        </ul>
+        @include('positions.list', ['positions' => $company->positions])
     </div>
     <div class="col-md-4">
         @if($user->company->id == $company->id)

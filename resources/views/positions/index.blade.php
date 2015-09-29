@@ -8,6 +8,7 @@
                 <a href="{{ route('companies.positions.show', ['companies' => $company->id, 'positions' => $position->id]) }}">
                     {{ $position->title }}
                 </a>
+                <span class="glyphicon glyphicon-remove"></span>
             </li>
         @endforeach
     </ul>
