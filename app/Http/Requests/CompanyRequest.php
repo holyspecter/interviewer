@@ -2,7 +2,7 @@
 
 namespace Interviewer\Http\Requests;
 
-class CreateCompanyRequest extends Request
+class CompanyRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.

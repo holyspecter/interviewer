@@ -38,10 +38,10 @@ class CompanyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Requests\CreateCompanyRequest $request
+     * @param Requests\CompanyRequest $request
      * @return Response
      */
-    public function store(Requests\CreateCompanyRequest $request)
+    public function store(Requests\CompanyRequest $request)
     {
         Company::create($request->all());
 
@@ -70,18 +70,28 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        if (\Auth::user()->company->id !== $company->id) {
+            abort(403);
+        }
+
+        return view('companies.edit', [
+            'company' => $company,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param Requests\CompanyRequest $request
+     * @param Company $company
      * @return Response
      */
-    public function update($id)
+    public function update(Requests\CompanyRequest $request, Company $company)
     {
-        //
+        $company->update($request->all());
+        $company->save();
+
+        return redirect()->route('companies.index');
     }
 
     /**

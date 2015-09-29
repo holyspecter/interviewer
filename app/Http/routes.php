@@ -16,6 +16,8 @@ Route::get('home', [
 // Positions
 Route::resource('companies.positions', 'PositionController');
 
+Route::resource('questions', 'QuestionController');
+
 // Authentication routes
 Route::get('login', [
     'as' => 'login',

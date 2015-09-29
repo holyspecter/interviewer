@@ -1,4 +1,13 @@
-<h3>{{ $company->name }}</h3>
+<div class="row">
+    <div class="col-md-4">
+        <h3>{{ $company->name }}</h3>
+    </div>
+    <div class="col-md-4">
+        @if($user->company->id == $company->id)
+            {!! Html::link(route('companies.edit', ['companies' => $company->id]), 'Edit info', ['class' => 'btn btn-primary']) !!}
+        @endif
+    </div>
+</div>
 <hr/>
 <article>
     {{ $company->description }}
