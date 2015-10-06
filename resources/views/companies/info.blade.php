@@ -33,6 +33,13 @@
                     <a href="{{ route('companies.questionnaires.show', ['companies' => $company->id, 'questionnaires' => $questionnaire->id]) }}">
                         {{ $questionnaire->title }}
                     </a>
+                    @if($user->company->id == $company->id)
+                        {!! Form::open(['url' => route('companies.questionnaires.destroy', ['companies' => $questionnaire->company->id, 'questionnaires' => $questionnaire->id]), 'method' => 'DELETE', 'style' => 'display: inline;']) !!}
+                            <button type="submit" class="btn btn-danger">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        {!! Form::close() !!}
+                    @endif
                 </li>
             @endforeach
         </ul>

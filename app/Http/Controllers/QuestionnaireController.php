@@ -121,11 +121,21 @@ class QuestionnaireController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Company       $company
+     * @param Questionnaire $questionnaire
+     *
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Company $company, Questionnaire $questionnaire)
     {
-        //
+        if (\Auth::user()->company->id !== $company->id) {
+            abort(403);
+        }
+
+        $questionnaire->delete();
+
+        return redirect()->route('companies.show', [
+            'company' => $company,
+        ]);
     }
 }
