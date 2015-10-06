@@ -145,6 +145,7 @@ return [
         Interviewer\Providers\AppServiceProvider::class,
         Interviewer\Providers\EventServiceProvider::class,
         Interviewer\Providers\RouteServiceProvider::class,
+        \Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -197,6 +198,7 @@ return [
         'Form'      => \Illuminate\Html\FormFacade::class,
         'Html'      => \Illuminate\Html\HtmlFacade::class,
         'Breadcrumbs' => \DaveJamesMiller\Breadcrumbs\Facade::class,
+        'Debugbar'  => Barryvdh\Debugbar\Facade::class,
 
     ],
 
